@@ -1,0 +1,3 @@
+title   KAOS v1
+        root    (fd0)
+        kernel  /kernel.bin
