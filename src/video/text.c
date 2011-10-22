@@ -7,7 +7,6 @@ static int video_text_currentcolour = 0x0F;
 static struct video_framebuffer video_text_framebuffer = {0xB8000, 80, 25, 2};
 
 
-
 void video_text_putchar(char character)
 {
 //Check if this is a newline
@@ -19,21 +18,41 @@ void video_text_putchar(char character)
 		video_putpixel(&video_text_framebuffer, video_text_currentx, video_text_currenty, &value);
 
 	//Move cursor right
-		video_text_currentx++;
+		int newx = video_text_currentx + 1;
 
 	//Wrap cursor
-		if (video_text_currentx >= video_text_framebuffer.xsize)
+		if (newx >= video_text_framebuffer.xsize)
 			video_text_newline();
+		else
+			video_text_setcursorposition(newx, video_text_currenty);
 	}
+}
+
+void video_text_scroll()
+{
+
 }
 
 void video_text_newline()
 {
-//Zero x
-	video_text_currentx = 0;
+//Find where the next line is
+	int newy = video_text_currenty + 1;
 
-//Increment y
-	video_text_currenty++;
+//Check that cursor is still on screen
+	if (newy >= video_text_framebuffer.ysize) {
+		newy--;
+		video_text_scroll();
+	}
+
+//Set cursor position
+	video_text_setcursorposition(0, newy);
+}
+
+void video_text_setcursorposition(int x, int y)
+{
+//Set vars
+	video_text_currentx = x;
+	video_text_currenty = y;
 }
 
 void video_text_cls()

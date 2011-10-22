@@ -16,7 +16,9 @@ void video_cls(struct video_framebuffer* buffer, const void* value);
 
 void video_text_puttext(const char* string);
 void video_text_putchar(char character);
+void video_text_scroll();
 void video_text_newline();
+void video_text_setcursorposition(int x, int y);
 void video_text_cls();
 
 #endif
