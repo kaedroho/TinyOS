@@ -3,5 +3,6 @@
 
 //MEMORY FUNCTIONS
 void memcpy(void* dest, const void* src, int bytes);
+void memset(void* dest, int val, int bytes);
 
 #endif

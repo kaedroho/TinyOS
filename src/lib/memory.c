@@ -10,3 +10,14 @@ void memcpy(void* dest, const void* src, int bytes)
 			((char*)dest)[i] = ((char*)src)[i];
 	}
 }
+
+void memset(void* dest, int val, int bytes)
+{
+//Check that theres some data set
+	if (bytes > 0){
+	//Set the data
+		int i = 0;
+		for (i = 0; i<bytes; i++)
+			((char*)dest)[i] = val;
+	}
+}
