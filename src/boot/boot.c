@@ -20,4 +20,17 @@ void boot()
 	video_text_puttext("Loading ISR          ");
 	isr_setup();
 	video_text_puttext("[ DONE ]\n");
+
+	video_text_puttext("Loading IRQ          ");
+	irq_setup();
+	video_text_puttext("[ DONE ]\n");
+
+	video_text_puttext("Enabling Interrupts  ");
+	__asm__ __volatile__("sti"); 
+	video_text_puttext("[ DONE ]\n");
+
+//Test interrupts
+	volatile int a = 1;
+	volatile int b = 0;
+	volatile int c = a / b;
 }

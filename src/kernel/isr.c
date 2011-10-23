@@ -1,7 +1,7 @@
 #include <kernel.h>
 #include <video.h>
 
-//Exception handlers
+//ISR handlers
 extern void isr0();
 extern void isr1();
 extern void isr2();
