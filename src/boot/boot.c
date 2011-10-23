@@ -29,7 +29,15 @@ void boot()
 	__asm__ __volatile__("sti"); 
 	video_text_puttext("[ DONE ]\n");
 
-//Test interrupts
+	video_text_puttext("Loading Timer        ");
+	timer_setup();
+	video_text_puttext("[ DONE ]\n");
+
+	video_text_puttext("Loading Keyboard     ");
+	keyboard_setup();
+	video_text_puttext("[ DONE ]\n");
+
+//Test panic
 	volatile int a = 1;
 	volatile int b = 0;
 	volatile int c = a / b;

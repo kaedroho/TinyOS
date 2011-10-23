@@ -74,49 +74,12 @@ void isr_setup()
 }
 
 
-char* isr_exception_messages[] = {
-	"Division By Zero",
-	"Debug",
-	"Non Maskable Interrupt",
-	"Breakpoint",
-	"Into Detected Overflow",
-	"Out of Bounds",
-	"Invalid Opcode",
-	"No Coprocessor",
-	"Double Fault",
-	"Coprocessor Segment Overrun",
-	"Bad TSS",
-	"Segment Not Present",
-	"Stack Fault",
-	"General Protection Fault",
-	"Page Fault",
-	"Unknown Interrupt",
-	"Coprocessor Fault",
-	"Alignment Check",
-	"Machine Check",
-	"Unknown",
-	"Unknown",
-	"Unknown",
-	"Unknown",
-	"Unknown",
-	"Unknown",
-	"Unknown",
-	"Unknown",
-	"Unknown",
-	"Unknown",
-	"Unknown",
-	"Unknown",
-	"Unknown"
-};
-
-
 void isr_fault_handler(struct regs* r)
 {
 //Check that this is a fault
 	if (r->int_no < 32) {
-		video_text_puttext("ERROR: ");
-		video_text_puttext(isr_exception_messages[r->int_no]);
-		for (;;);
+	//Call panic
+		panic(r);
 	}
 }
 

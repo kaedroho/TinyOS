@@ -13,12 +13,16 @@ void video_putpixels(struct video_framebuffer* buffer, int x, int y, int count, 
 void video_putpixels_repeat(struct video_framebuffer* buffer, int x, int y, int count, const void* value);
 void video_putpixel(struct video_framebuffer* buffer, int x, int y, const void* value);
 void video_cls(struct video_framebuffer* buffer, const void* value);
+void video_fallback();
 
-void video_text_puttext(const char* string);
 void video_text_putchar(char character);
 void video_text_scroll();
 void video_text_newline();
 void video_text_setcursorposition(int x, int y);
 void video_text_cls();
+void video_text_puttext(const char* string);
+void video_text_putuintf(int value, int base, int length, char fill);
+void video_text_putuint(int value, int base);
+void video_text_setcolour(int colour);
 
 #endif

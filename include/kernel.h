@@ -15,10 +15,10 @@ void idt_setup();
 
 struct regs
 {
-    unsigned int gs, fs, es, ds;      /* pushed the segs last */
-    unsigned int edi, esi, ebp, esp, ebx, edx, ecx, eax;  /* pushed by 'pusha' */
-    unsigned int int_no, err_code;    /* our 'push byte #' and ecodes do this */
-    unsigned int eip, cs, eflags, useresp, ss;   /* pushed by the processor automatically */ 
+    unsigned int gs, fs, es, ds;
+    unsigned int edi, esi, ebp, esp, ebx, edx, ecx, eax;
+    unsigned int int_no, err_code;
+    unsigned int eip, cs, eflags, useresp, ss;
 };
 
 
@@ -30,5 +30,12 @@ void isr_setup();
 void irq_set_handler(int irq, void (*handler)(struct regs* r));
 void irq_unset_handler(int irq);
 void irq_setup();
+
+
+//Timer
+void timer_setup();
+
+//Panic
+void panic(struct regs* r);
 
 #endif

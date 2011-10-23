@@ -45,3 +45,10 @@ void video_cls(struct video_framebuffer* buffer, const void* value)
 		video_putpixels_repeat(buffer, 0, 0, buffer->xsize, value);
 	}
 }
+
+
+
+void video_fallback()
+{
+
+}
